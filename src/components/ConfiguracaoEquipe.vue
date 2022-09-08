@@ -2,17 +2,17 @@
   <div>
     <div class="row">
       <div class="col">
-        <h5><i class="bi-boxes me-2"></i>Configuração da equipe</h5>
+        <h5 :class="corTitulo"><i class="bi-boxes me-2"></i>{{tituloCustomizadoLocal}}</h5>
       </div>
     </div>
     <div class="row">
       <div class="col-8">
-        <p>Enfermeiro:{{equipe.enfermeiro}}</p>
-        <p>Socorrista: {{equipe.socorrista}}</p>
-        <p>Médico: {{equipe.medico}} </p>
-        <p>Carro: {{equipe.carro}} </p>
-        <p>Telefone: {{equipe.telefone}}</p>
-        <p>Kit de reanimação: {{equipe.kitDeReanimacao}}</p>
+        <p>Enfermeiro: {{e.enfermeiro}}</p>
+        <p>Socorrista: {{e.socorrista}}</p>
+        <p>Médico: {{e.medico}} </p>
+        <p>Carro: {{e.carro}} </p>
+        <p>Telefone: {{e.telefone}}</p>
+        <p>Kit de reanimação: {{e.kitDeReanimacao}}</p>
       </div>
       <div class="col-4 text-center">
         <div class="row">
@@ -34,6 +34,32 @@
   import {mapState} from 'vuex'
 export default {
     name: 'ConfiguracaoEquipe',
-    computed: mapState(['equipe'])
+    data: () => ({
+      titulo:'Configuração da equipe'
+    }),
+    //computed: mapState(['equipe'])
+    /*
+    computed: {
+      e(){
+        return this.$store.state.equipe
+      }
+    }
+    */
+   computed: { 
+   ...mapState({
+    e: state => state.equipe,
+    tituloCustomizadoLocal(state) {
+      return `${this.titulo} - ${state.equipe.carro}`
+    },
+    corTitulo(){
+      let teste = true
+      if(teste){
+        return 'text-danger'
+      }
+      return 'text-primary'
+    }
+
+   })
+  }
 }
 </script>

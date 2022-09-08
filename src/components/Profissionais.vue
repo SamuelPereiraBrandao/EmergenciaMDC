@@ -5,7 +5,7 @@
                 <h5><i class="bi-file-person me-2"></i>Profissionais</h5>
                 <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name: 'profissionais', params: { tipo: 'enfermeiros' } }">Enfermeiros</router-link>
+                    <router-link class="nav-link" :to="{ name: 'profissionais', params: { tipo: 'enfermeiros' } }">Enfermeiros({{$store.getters.totalEnfermeiros}})</router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" :to="{ name: 'profissionais', params: { tipo: 'socorristas' } }">Socorristas</router-link>
