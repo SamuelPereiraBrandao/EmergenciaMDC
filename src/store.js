@@ -12,21 +12,29 @@ export default new Vuex.Store({
             kitDeReanimacao: 'Kit 0001'
         },
         enfermeiros: [
-            { id: 1, nome: 'João', escala: '12x36'},
+            { id: 1, nome: 'Samuel Enfermeiro', escala: '12x36'},
             { id: 2, nome: 'Maria', escala: '12x36'},
             { id: 3, nome: 'Ana', escala: '24x48'},
             { id: 4, nome: 'José', escala: '24x48'},
-            { id: 5, nome: 'Samuel', escala: '24x48'},
+            { id: 5, nome: 'Samara', escala: '24x48'},
             { id: 6, nome: 'Marcos', escala: '12x36'}
         ],
         socorristas: [
-            { id: 1, nome: 'Marcos', turno: 'manhã'},
-            { id: 2, nome: 'Felipe', turno: 'tarde'},
-            { id: 3, nome: 'Cláudia', turno: 'tarde'},
-            { id: 4, nome: 'Michele', turno: 'noite'}
+            { id: 1, nome: 'Samuel Socorrista', turno: 'Manhã'},
+            { id: 2, nome: 'Felipe', turno: 'Tarde'},
+            { id: 3, nome: 'Cláudia', turno: 'Tarde'},
+            { id: 4, nome: 'Michele', turno: 'Noite'},
+            { id: 5, nome: 'Marcos', turno: 'Noite'},
+            { id: 6, nome: 'Jose', turno: 'Manhã'},
+            { id: 7, nome: 'Amanda', turno: 'Noite'},
+            { id: 8, nome: 'Roberta', turno: 'Manhã'},
+            { id: 9, nome: 'Marcela', turno: 'Manhã'},
+            { id: 10, nome: 'Jorge', turno: 'Tarde'},
+            { id: 11, nome: 'Thel', turno: 'Tarde'},
+            { id: 12, nome: 'Udelsom', turno: 'Tarde'},
         ],
         medicos: [
-            { id: 1, nome: 'André', escala: '12x36'},
+            { id: 1, nome: 'Samuel Medico', escala: '12x36'},
             { id: 2, nome: 'Roberta', escala: '12x36'},
             { id: 3, nome: 'Carlos', escala: '24x48'},
             { id: 4, nome: 'Juliana', escala: '24x48'}
@@ -57,13 +65,15 @@ export default new Vuex.Store({
             return state.enfermeiros.length
         },
         socorristasPorTurno(state){ //closure
-            return (turno) => {
-                if(!turno){
-                    return state.socorristas
+            return turno => !turno ? state.socorristas : state.socorristas.filter( s=> s.turno === turno)
 
-                }
-                return state.socorristas.filter( s=> s.turno === turno)
-            }
+        },
+        totalSocorristas: state => state.socorristas.length,
+        totalSocorristasPorTurno: (state, getters) => {
+
+            return turno => getters.socorristasPorTurno(turno).length
+
+           
         }
     }
 })
