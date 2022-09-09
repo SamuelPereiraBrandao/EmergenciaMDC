@@ -11,7 +11,7 @@
                     <router-link class="nav-link" :to="{ name: 'profissionais', params: { tipo: 'socorristas' } }">Socorristas ({{$store.getters.totalSocorristas}})</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{ name: 'profissionais', params: { tipo: 'medicos' } }">Médicos</router-link>
+                    <router-link class="nav-link" :to="{ name: 'profissionais', params: { tipo: 'medicos' } }">Médicos ({{$store.getters.totalMedicos}})</router-link>
                 </li>
                 </ul>
             </div>

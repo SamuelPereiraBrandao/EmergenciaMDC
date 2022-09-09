@@ -39,6 +39,7 @@ import ConfiguracaoEquipe from './ConfiguracaoEquipe.vue'
 import Equipamentos from './Equipamentos.vue'
 import Equipes from './Equipes.vue'
 import Profissionais from './Profissionais.vue'
+import { mapMutations } from 'vuex'
 
 export default {
   components: { 
@@ -55,6 +56,31 @@ export default {
     tituloCustomizado(){
       return `${this.$store.state.titulo}`
     }
+  },
+  methods:{
+    ...mapMutations(['setInfermeiros','setSocorristas','setMedicos','setCarros','setTelefones','setKit'])
+  },
+  created(){
+    fetch('http://localhost:3001/enfermeiros')
+    .then (response => response.json())
+    .then (dados => this.$store.commit('setEnfermeiros', dados) )
+
+    fetch('http://localhost:3001/socorristas')
+    .then (response => response.json())
+    .then (dados => this.setSocorristas(dados) )
+
+    fetch('http://localhost:3001/medicos')
+    .then (response => response.json())
+    .then (dados => this.setMedicos(dados) )
+
+    fetch('http://localhost:3001/equipamentos')
+    .then (response => response.json())
+    .then (dados => {
+      this.setCarros(dados.carros) 
+      this.setTelefones(dados.telefones)
+      this.setKit(dados.kitsDeReanimacao)
+    })
+    
   }
 }
 </script>
