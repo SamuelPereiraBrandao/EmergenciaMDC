@@ -2,7 +2,7 @@ import Vuex from 'vuex'
 
 export default new Vuex.Store({
     state: {
-        titulo:'Emergências Médicas',
+        titulo: 'Emergências Médicas',
         equipe: {
             enfermeiro: '',
             socorrista: '',
@@ -21,11 +21,11 @@ export default new Vuex.Store({
         }
     },
     getters: {
-        totalEnfermeiros(state){
+        totalEnfermeiros(state) {
             return state.enfermeiros.length
         },
-        socorristasPorTurno(state){ //closure
-            return turno => !turno ? state.socorristas : state.socorristas.filter( s=> s.turno === turno)
+        socorristasPorTurno(state) { //closure
+            return turno => !turno ? state.socorristas : state.socorristas.filter(s => s.turno === turno)
 
         },
         totalSocorristas: state => state.socorristas.length,
@@ -34,14 +34,14 @@ export default new Vuex.Store({
 
             return turno => getters.socorristasPorTurno(turno).length
 
-           
+
         }
     },
     mutations: {
         //setItemEquipe: (state, item) => {
         setItemEquipe: (state, item) => {
-       
-             let t = item.tipo
+
+            let t = item.tipo
             let d = item.dados
 
             if (t == 'enfermeiros') state.equipe.enfermeiro = d.nome
@@ -50,7 +50,7 @@ export default new Vuex.Store({
             if (t == 'carros') state.equipe.carro = d.placa
             if (t == 'telefones') state.equipe.telefone = d.telefone
             if (t == 'kits-de-reanimacao') state.equipe.kitDeReanimacao = d.kit
-            
+
         },
         setEnfermeiros: (state, payload) => {
             state.enfermeiros = payload
@@ -77,13 +77,31 @@ export default new Vuex.Store({
 
     },
     actions: {
-        adicionarEquipamentos(context, {carros, kitsDeReanimacao, telefones}){
-            console.log(carros)
-            console.log(kitsDeReanimacao)
-            console.log(telefones)
-            context.commit('setCarros', carros)
-            context.commit('setTelefones', telefones)
-            context.commit('setKit', kitsDeReanimacao)
+        fetchEquipamentos(context) {
+            fetch('http://localhost:3001/equipamentos')
+                .then(response => response.json())
+                .then(dados => {
+                    context.commit('setCarros', dados.carros)
+                    context.commit('setTelefones', dados.telefones)
+                    context.commit('setKit', dados.kitsDeReanimacao)
+                })
+
+
+
+        },
+        fetchProfissionais(context) {
+            fetch('http://localhost:3001/enfermeiros')
+                .then(response => response.json())
+                .then(dados => context.commit('setEnfermeiros', dados))
+
+            fetch('http://localhost:3001/socorristas')
+                .then(response => response.json())
+                .then(dados => context.commit('setSocorristas', dados))
+
+            fetch('http://localhost:3001/medicos')
+                .then(response => response.json())
+                .then(dados => context.commit('setMedicos',dados))
+
         }
     }
 })

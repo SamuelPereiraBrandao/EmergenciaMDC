@@ -9,13 +9,16 @@
         { "id": 7, "nome": "Antônio", "escala": "12x36"}
     ],
     "socorristas": [
-        { "id": 1, "nome": "Marcos", "turno": "manhã"},
-        { "id": 2, "nome": "Felipe", "turno": "tarde"},
-        { "id": 3, "nome": "Cláudia", "turno": "tarde"},
-        { "id": 4, "nome": "Michele", "turno": "noite"},
-        { "id": 5, "nome": "Pedro", "turno": "manhã"},
-        { "id": 6, "nome": "Miguel", "turno": "manhã"},
-        { "id": 7, "nome": "Karina", "turno": "tarde"}
+        { "id": 1, "nome": "Marcos", "turno": "Manhã"},
+        { "id": 2, "nome": "Felipe", "turno": "Tarde"},
+        { "id": 3, "nome": "Cláudia", "turno": "Tarde"},
+        { "id": 4, "nome": "Michele", "turno": "Noite"},
+        { "id": 5, "nome": "Pedro", "turno": "Tarde"},
+        { "id": 6, "nome": "Miguel", "turno": "Manhã"},
+        { "id": 7, "nome": "Karina", "turno": "Tarde"},
+        { "id": 8, "nome": "Samuel", "turno": "Noite"},
+        { "id": 9, "nome": "Leticia", "turno": "Noite"},
+        { "id": 10, "nome": "Maria", "turno": "Tarde"}
     ],
     "medicos": [
         { "id": 1, "nome": "André", "escala": "12x36"},
