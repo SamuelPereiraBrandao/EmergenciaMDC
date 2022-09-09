@@ -61,7 +61,13 @@ export default {
     ...mapMutations(['setInfermeiros','setSocorristas','setMedicos','setCarros','setTelefones','setKit'])
   },
   created(){
-    this.$store.dispatch('fetchEquipamentos')
+    //habilitar e desabilitar
+    this.$store.dispatch({
+      type:'fetchEquipamentos',
+      carros: true,
+      telefones: true,
+      kitsDeReanimacao: true
+  })
     this.$store.dispatch('fetchProfissionais')
     
    
