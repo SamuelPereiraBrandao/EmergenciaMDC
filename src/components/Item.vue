@@ -28,7 +28,15 @@ export default {
                 dados: this.dados,
                 
             }
-            this.$store.commit('setItemEquipe', item)
+            //this.$store.commit('setItemEquipe', item)
+            this.$store.commit({
+                type: 'setItemEquipe',
+                abc: 'Teste',
+                x: 500,
+                y: 7.7,
+                z: [],
+                item
+            })
 
         },
         adicionarItemEquipeAbordagemIncorreta(){

@@ -78,8 +78,11 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        setItemEquipe: (state, item) => {
-            let t = item.tipo
+        //setItemEquipe: (state, item) => {
+        setItemEquipe: (state, {item}) => {
+            //console.log(payload)
+            //let item = payload.item
+             let t = item.tipo
             let d = item.dados
 
             if (t == 'enfermeiros') state.equipe.enfermeiro = d.nome
@@ -88,6 +91,7 @@ export default new Vuex.Store({
             if (t == 'carros') state.equipe.carro = d.placa
             if (t == 'telefones') state.equipe.telefone = d.telefone
             if (t == 'kits-de-reanimacao') state.equipe.kitDeReanimacao = d.kit
+            
         }
     }
 })
