@@ -23,10 +23,19 @@ export default {
     },
     methods: {
         adicionarItemEquipe(){
+            let item = {
+                tipo: this.tipo,
+                dados: this.dados,
+                
+            }
+            this.$store.commit('setItemEquipe', item)
+
+        },
+        adicionarItemEquipeAbordagemIncorreta(){
 
             let t = this.tipo
             let d = this.dados
-            
+
             t == 'enfermeiros' ? this.$store.state.equipe.enfermeiro = d.nome : null
             t == 'socorristas' ? this.$store.state.equipe.socorrista = d.nome : null
             t == 'medicos' ? this.$store.state.equipe.medico = d.nome : null
