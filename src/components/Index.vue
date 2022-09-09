@@ -3,7 +3,7 @@
     
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{tituloCustomizado}}</a>
+        <a class="navbar-brand" href="#"> <i class="bi bi-heart-pulse"></i> - {{tituloCustomizado}}</a>
       </div>
     </nav>
 
@@ -60,10 +60,24 @@ export default {
   methods:{
     ...mapMutations(['setInfermeiros','setSocorristas','setMedicos','setCarros','setTelefones','setKit']),
     //...mapActions(['fetchEquipamentos','fetchProfissionais'])
+    /*
     ...mapActions({
       fetchEquipamentos: 'fetchEquipamentos',
       fetchProfissionais: 'fetchProfissionais'
-    })
+    }) 
+    */
+    ...mapActions({
+      fetchEquipamentos: (dispatch, payload) => {
+        //implementar lógica
+        //console.log('payload: ', payload)
+        dispatch('fetchEquipamentos', payload)
+        //implementar lógica
+      },
+      fetchProfissionais: dispatch => {
+        //implementar lógica
+        dispatch('fetchProfissionais')
+      }
+    }) 
   },
   created(){
     //habilitar e desabilitar
