@@ -72,7 +72,7 @@ export default {
     fetch('http://localhost:3001/medicos')
     .then (response => response.json())
     .then (dados => this.setMedicos(dados) )
-
+/*
     fetch('http://localhost:3001/equipamentos')
     .then (response => response.json())
     .then (dados => {
@@ -80,7 +80,12 @@ export default {
       this.setTelefones(dados.telefones)
       this.setKit(dados.kitsDeReanimacao)
     })
-    
-  }
+    */
+    fetch('http://localhost:3001/equipamentos')
+    .then (response => response.json())
+    .then (dados => {
+      this.$store.dispatch('adicionarEquipamentos', dados)
+    } )
+}
 }
 </script>
