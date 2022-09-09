@@ -8,16 +8,17 @@
                 <option value="Noite">Noite</option>
             </select>
         </div>   
-        <item v-for="(item, indice) in itens" :key="indice" :dados="item"/>
+        <item v-for="(item, indice) in itens" :key="indice" :dados="item" :tipo="tipo"/>
         <div v-if="tipo == 'socorristas'">
-            Total: {{$store.getters.totalSocorristasPorTurno(turno)}}
+            Total: {{totalSocorristasPorTurno(turno)}}
 
         </div>
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState, mapGetters} from 'vuex'
+    
 import Item from '@/components/Item.vue'
 
 export default {
@@ -39,6 +40,8 @@ export default {
             telefones: state => state.equipamentos.telefones,
             kitsDeReanimacao: state => state.equipamentos.kitsDeReanimacao
         }),
+        ...mapGetters(['socorristasPorTurno','totalSocorristasPorTurno']),
+       
         itens(){
             switch(this.tipo){
                 case 'enfermeiros': return this.enfermeiros

@@ -4,15 +4,15 @@ export default new Vuex.Store({
     state: {
         titulo:'Emergências Médicas',
         equipe: {
-            enfermeiro: 'Nome do enfermeiro',
-            socorrista: 'Nome do socorrista',
-            medico: 'Nome do medico',
-            carro: 'Placa do carro',
-            telefone: '+55 11 91117-5506',
-            kitDeReanimacao: 'Kit 0001'
+            enfermeiro: '',
+            socorrista: '',
+            medico: '',
+            carro: '',
+            telefone: '',
+            kitDeReanimacao: ''
         },
         enfermeiros: [
-            { id: 1, nome: 'Samuel Enfermeiro', escala: '12x36'},
+            { id: 1, nome: 'Samuel', escala: '12x36'},
             { id: 2, nome: 'Maria', escala: '12x36'},
             { id: 3, nome: 'Ana', escala: '24x48'},
             { id: 4, nome: 'José', escala: '24x48'},
@@ -20,7 +20,7 @@ export default new Vuex.Store({
             { id: 6, nome: 'Marcos', escala: '12x36'}
         ],
         socorristas: [
-            { id: 1, nome: 'Samuel Socorrista', turno: 'Manhã'},
+            { id: 1, nome: 'Pereira', turno: 'Manhã'},
             { id: 2, nome: 'Felipe', turno: 'Tarde'},
             { id: 3, nome: 'Cláudia', turno: 'Tarde'},
             { id: 4, nome: 'Michele', turno: 'Noite'},
@@ -34,7 +34,7 @@ export default new Vuex.Store({
             { id: 12, nome: 'Udelsom', turno: 'Tarde'},
         ],
         medicos: [
-            { id: 1, nome: 'Samuel Medico', escala: '12x36'},
+            { id: 1, nome: 'Brandão', escala: '12x36'},
             { id: 2, nome: 'Roberta', escala: '12x36'},
             { id: 3, nome: 'Carlos', escala: '24x48'},
             { id: 4, nome: 'Juliana', escala: '24x48'}
@@ -56,7 +56,8 @@ export default new Vuex.Store({
                 { id: 1, kit: 'K0001' },
                 { id: 2, kit: 'K0002' },
                 { id: 3, kit: 'K0003' },
-                { id: 4, kit: 'K0004' }
+                { id: 4, kit: 'K0004' },
+                { id: 5, kit: 'K0005' }
             ]
         }
     },
