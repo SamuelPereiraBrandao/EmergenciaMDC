@@ -85,7 +85,7 @@ export default new Vuex.Store({
     actions: {
         fetchEquipamentos(context, {carros, telefones, kitsDeReanimacao}) {
            
-            fetch('http://localhost:3001/equipamentos')
+            fetch('http://localhost:3000/equipamentos')
                 .then(response => response.json())
                 .then(dados => {
                     if(carros) context.commit('setCarros', dados.carros)
@@ -97,15 +97,15 @@ export default new Vuex.Store({
 
         },
         fetchProfissionais(context) {
-            fetch('http://localhost:3001/enfermeiros')
+            fetch('http://localhost:3000/enfermeiros')
                 .then(response => response.json())
                 .then(dados => context.commit('setEnfermeiros', dados))
 
-            fetch('http://localhost:3001/socorristas')
+            fetch('http://localhost:3000/socorristas')
                 .then(response => response.json())
                 .then(dados => context.commit('setSocorristas', dados))
 
-            fetch('http://localhost:3001/medicos')
+            fetch('http://localhost:3000/medicos')
                 .then(response => response.json())
                 .then(dados => context.commit('setMedicos',dados))
 
